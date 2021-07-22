@@ -96,7 +96,8 @@ function sys_solve(para,dynaEq)
 
     Γ = 2*γ*Temp/m
     p = (γ, Γ)
-    r0 = @SArray[0.0, 0.0, 0.0, 0.0]
+    r0 = @SArray[para["init speed"][1],para["init speed"][2], 
+                para["init position"][1], para["init position"][2]]
     r = Vector{typeof(r0)}(undef, N_step)
     r[1] = r0
 
