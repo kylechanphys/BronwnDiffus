@@ -23,15 +23,15 @@ function periodic_BC(u,BC)
     up_b, low_b = BC
     vx,vy,x,y = u 
 
-    if x > up_b 
+    if x >= up_b 
         x = low_b + x - up_b
-    elseif x < low_b
+    elseif x <= low_b
         x = up_b - (low_b - x) 
     end
 
-    if y > up_b 
+    if y >= up_b 
         y = low_b + y - up_b
-    elseif x < low_b
+    elseif y <= low_b
         y = up_b - (low_b - y) 
     end
     u = vx,vy,x,y
@@ -102,9 +102,10 @@ function sys_solve(para,dynaEq)
     r[1] = r0
 
     # Boundary of brownian
-    low_b = -L/2 + dx
-    up_b = L/2 - dx  
+    low_b = -L/2 + 2*dx
+    up_b = L/2 - 2*dx  
     BC = (up_b, low_b)
+    # @show BC 
 
 
     ### main loop
